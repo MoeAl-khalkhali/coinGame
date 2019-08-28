@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Objects;
-
 import model.enumeration.BetType;
 import model.enumeration.CoinFace;
 import model.interfaces.Coin;
@@ -87,7 +86,8 @@ public class CoinImpl implements Coin
 	// checks to see if coins are equal by using the hascode
 	public boolean equals(Coin coin)
 	{
-		if (this.hashCode() == coin.hashCode())
+		Object coinObj = coin;
+		if (this.equals(coinObj))
 		{
 			return true;
 		} else
@@ -96,12 +96,28 @@ public class CoinImpl implements Coin
 		}
 	}
 
-	// generates hash code for the coin
+
+
 	@Override
 	public int hashCode()
 	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coin == null) ? 0 : coin.hashCode());
+		return result;
+	}
 
-		return Objects.hashCode(this.toString());
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		CoinImpl other = (CoinImpl) obj;
+		if (coin != other.coin)
+			return false;
+		return true;
 	}
 
 	// toString for the class

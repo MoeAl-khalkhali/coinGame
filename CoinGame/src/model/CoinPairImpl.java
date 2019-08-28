@@ -9,8 +9,8 @@ public class CoinPairImpl implements CoinPair
 {
 	CoinImpl coin1 = new CoinImpl(1);
 	CoinImpl coin2 = new CoinImpl(2);
-	
-	//getter for coin 1
+
+	// getter for coin 1
 	public Coin getCoin1()
 	{
 		return coin1;
@@ -21,18 +21,19 @@ public class CoinPairImpl implements CoinPair
 	{
 		return coin2;
 	}
-	
-	//tostring for class
+
+	// tostring for class
 	@Override
 	public String toString()
 	{
 		return coin1.toString() + " " + coin2.toString();
 	}
-	
-	//checks generated hashcode, if they are equal, return true
+
+	// checks generated hashcode, if they are equal, return true
 	public boolean equals(CoinPair coinPair)
 	{
-		if (this.hashCode() == coinPair.hashCode())
+		Object coinPairObj = coinPair;
+		if (this.equals(coinPairObj))
 		{
 			return true;
 		} else
@@ -41,10 +42,32 @@ public class CoinPairImpl implements CoinPair
 		}
 	}
 
-	//generates hascode for coin pair
 	@Override
 	public int hashCode()
 	{
-		return Objects.hashCode(this.toString());
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((coin1 == null) ? 0 : coin1.hashCode());
+		result = prime * result + ((coin2 == null) ? 0 : coin2.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		CoinPairImpl other = (CoinPairImpl) obj;
+		if ((coin1.equals(other.coin1)) && (coin2.equals(other.coin2)))
+		{
+			return true;
+
+		} else
+		{
+			return false;
+		}
+	}
+
 }
