@@ -4,6 +4,7 @@ import java.util.Objects;
 import model.enumeration.BetType;
 import model.enumeration.CoinFace;
 import model.interfaces.Coin;
+import util.Helper;
 
 public class CoinImpl implements Coin
 {
@@ -124,12 +125,14 @@ public class CoinImpl implements Coin
 	@Override
 	public String toString()
 	{
+		String oldFace = coin.name();
+		String face = Helper.changeCase(oldFace);
 		if (number == 1)
 		{
-			return "Coin 1: " + this.coin + ",";
+			return "Coin 1: " + face + ",";
 		} else
 		{
-			return "Coin 2: " + this.coin;
+			return "Coin 2: " + face;
 		}
 	}
 

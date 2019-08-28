@@ -42,7 +42,7 @@ public class SimpleTestClient
 
 		// create some test players
 		Player[] players = new Player[] { new SimplePlayer("1", "The Coin Master", 1000),
-				new SimplePlayer("2", "The Loser", 750), new SimplePlayer("3", "The Dabbler", 500) };
+				};
 
 		// add logging callback
 		gameEngine.addGameEngineCallback(new GameEngineCallbackImpl());
@@ -56,14 +56,14 @@ public class SimpleTestClient
 			// increases
 			// NOTE: we are passing a different BetType each time!
 			gameEngine.placeBet(player, 100, BetType.values()[enumOrdinal++ % BetType.values().length]);
-			gameEngine.spinPlayer(player, 100, 1000, 100, 50, 500, 50);
+			gameEngine.spinPlayer(player, 100, 300, 100, 50, 500, 50);
 
 		}
 
 		logger.log(Level.INFO, "SPINNING ...");
 		// OutputTrace.pdf was generated with these parameter values (using only first 3
 		// params as per spec)
-		gameEngine.spinSpinner(100, 1000, 200, 50, 500, 25);
+		gameEngine.spinSpinner(100, 300, 200, 50, 500, 25);
 
 		// TODO reset bets for next round if you were playing again
 	}

@@ -1,5 +1,6 @@
 package view;
 
+import util.Helper;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import view.interfaces.GameEngineCallback;
  */
 public class GameEngineCallbackImpl implements GameEngineCallback
 {
+	Helper helper = new Helper();
 	private static final Logger logger = Logger.getLogger(GameEngineCallback.class.getName());
 
 	public GameEngineCallbackImpl()
@@ -33,14 +35,16 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 
 	public void playerCoinUpdate(Player player, Coin coin, GameEngine engine)
 	{
+		String oldFace = coin.getFace().toString();
+		String face = helper.changeCase(oldFace);
 		//logs coin update whilst spinning
-		logger.log(Level.FINE, player.getPlayerName() + " Coin " + coin.getNumber() + " flipped to " + coin.getFace());
+		logger.log(Level.FINE, player.getPlayerName() + " Coin " + coin.getNumber() + " flipped to " + face);
 	}
 
 	public void playerResult(Player player, CoinPair coinPair, GameEngine engine)
 	{
-		// final results logged at Level.INFO
-		logger.log(Level.INFO, player.getPlayerName() + " Result= " + coinPair.toString());
+		
+		logger.log(Level.INFO, player.getPlayerName() + "final result=" + coinPair.toString());
 		
 	}
 
@@ -48,7 +52,9 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 	public void spinnerCoinUpdate(Coin coin, GameEngine engine)
 	{
 		//logs coin update whilst spinning
-		logger.log(Level.FINE, "Spinner " + " Coin " + coin.getNumber() + " flipped to " + coin.getFace());
+		String oldFace = coin.getFace().toString();
+		String face = helper.changeCase(oldFace);
+		logger.log(Level.FINE, "Spinner " + " coin " + coin.getNumber() + " flipped to " + face);
 
 	}
 
@@ -56,7 +62,7 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 	public void spinnerResult(CoinPair coinPair, GameEngine engine)
 	{
 		//gives final results
-		logger.log(Level.INFO, "Spinner, " + "Final Result= " + coinPair.toString());
+		logger.log(Level.INFO, "Spinner, " + "final result=" + coinPair.toString());
 		logger.log(Level.INFO, "Final Player Results");
 		//iterates over players and gets their results
 		for (Player player : engine.getAllPlayers())
