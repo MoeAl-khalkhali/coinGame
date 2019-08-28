@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import model.enumeration.BetType;
@@ -84,20 +85,20 @@ public class GameEngineImpl implements GameEngine
 	public void spinSpinner(int initialDelay1, int finalDelay1, int delayIncrement1, int initialDelay2, int finalDelay2,
 			int delayIncrement2) throws IllegalArgumentException
 	{
-		//creates spinner coin to spin
+		// creates spinner coin to spin
 		CoinPairImpl spinnerCoin = new CoinPairImpl();
 		coinDelay1 = initialDelay1;
 		coinDelay2 = initialDelay1;
-		
-		//checks for delay input error
+
+		// checks for delay input error
 		if ((delayIncrement1 > (finalDelay1 - initialDelay1)) || (delayIncrement2 > (finalDelay2 - initialDelay2))
 				|| (initialDelay1 < 0) || (initialDelay2 < 0) || (delayIncrement1 < 0) || (delayIncrement2 < 0)
 				|| (finalDelay1 < 0) || (finalDelay2 < 0))
 		{
 			throw new IllegalArgumentException("ERROR");
 		}
-		
-		//while loop for delays
+
+		// while loop for delays
 		while ((coinDelay1 < finalDelay1) || (coinDelay2 < finalDelay1))
 		{
 			if (coinDelay1 < finalDelay1)
@@ -129,13 +130,13 @@ public class GameEngineImpl implements GameEngine
 				gameEngineCallbackImpl.spinnerCoinUpdate(spinnerCoin.getCoin2(), this);
 			}
 		}
-		//applies bet results and call logger to log results
+		// applies bet results and call logger to log results
 		this.applyBetResults(spinnerCoin);
 		gameEngineCallbackImpl.spinnerResult(spinnerCoin, this);
 
 	}
 
-	//checks to to see betType then calls appropriate method to apply results
+	// checks to to see betType then calls appropriate method to apply results
 	@Override
 	public void applyBetResults(CoinPair spinnerResult)
 	{
@@ -155,7 +156,8 @@ public class GameEngineImpl implements GameEngine
 			}
 		}
 	}
-	//checks if player exists and adds player, if it exists, it overides the player
+
+	// checks if player exists and adds player, if it exists, it overides the player
 	@Override
 	public void addPlayer(Player player)
 	{
@@ -169,8 +171,8 @@ public class GameEngineImpl implements GameEngine
 		}
 		players.add(player);
 	}
-	
-	//returns player id
+
+	// returns player id
 	@Override
 	public Player getPlayer(String id)
 	{
@@ -181,8 +183,8 @@ public class GameEngineImpl implements GameEngine
 		}
 		return null;
 	}
-	
-	//loops through collections and removes player
+
+	// loops through collections and removes player
 	@Override
 	public boolean removePlayer(Player player)
 	{
@@ -197,8 +199,8 @@ public class GameEngineImpl implements GameEngine
 		}
 		return false;
 	}
-	
-	//add GameEngineCallback
+
+	// add GameEngineCallback
 	@Override
 	public void addGameEngineCallback(GameEngineCallback gameEngineCallback)
 	{
@@ -219,22 +221,22 @@ public class GameEngineImpl implements GameEngine
 			return false;
 		}
 	}
-	
-	//unmodifiable collection
+
+	// unmodifiable collection
 	@Override
 	public Collection<Player> getAllPlayers()
 	{
-		return players;
+		return Collections.unmodifiableCollection(players);
 	}
-	
-	//places bet for player
+
+	// places bet for player
 	@Override
 	public boolean placeBet(Player player, int bet, BetType betType)
 	{
 		this.player = player;
 		this.bet = bet;
 		this.betType = betType;
-		//checks if setBet is true, if true, bettype is set
+		// checks if setBet is true, if true, bettype is set
 		if (player.setBet(bet))
 		{
 			player.setBetType(betType);
@@ -242,7 +244,7 @@ public class GameEngineImpl implements GameEngine
 
 		} else
 		{
-			//if false then no bet
+			// if false then no bet
 			betType = betType.NO_BET;
 			player.setBetType(betType);
 			return false;

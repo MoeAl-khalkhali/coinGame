@@ -59,6 +59,7 @@ public class SimpleTestClient
 			gameEngine.spinPlayer(player, 100, 1000, 100, 50, 500, 50);
 
 		}
+		System.out.println(gameEngine.getAllPlayers());
 
 		logger.log(Level.INFO, "SPINNING ...");
 		// OutputTrace.pdf was generated with these parameter values (using only first 3
