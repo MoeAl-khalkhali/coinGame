@@ -12,7 +12,7 @@ public class CoinImpl implements Coin
 	CoinFace coin;
 	int number;
 
-	//sets random face for each coin
+	// sets random face for each coin
 	public CoinImpl(int number)
 	{
 		this.number = number;
@@ -47,7 +47,7 @@ public class CoinImpl implements Coin
 
 	}
 
-	//returns if its coin 1 or coin 2 (returns just the number)
+	// returns if its coin 1 or coin 2 (returns just the number)
 	public int getNumber()
 	{
 		if (bet == bet.COIN1)
@@ -60,14 +60,14 @@ public class CoinImpl implements Coin
 
 	}
 
-	//returns coins face
+	// returns coins face
 	public CoinFace getFace()
 	{
 
 		return coin;
 	}
 
-	//flips the coins face
+	// flips the coins face
 	public void flip()
 	{
 		if (coin == coin.HEADS)
@@ -84,7 +84,7 @@ public class CoinImpl implements Coin
 
 	}
 
-	//checks to see if coins are equal by using the hascode
+	// checks to see if coins are equal by using the hascode
 	public boolean equals(Coin coin)
 	{
 		if (this.hashCode() == coin.hashCode())
@@ -104,7 +104,7 @@ public class CoinImpl implements Coin
 		return Objects.hashCode(this.toString());
 	}
 
-	//toString for the class
+	// toString for the class
 	@Override
 	public String toString()
 	{
