@@ -44,7 +44,7 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 	public void playerResult(Player player, CoinPair coinPair, GameEngine engine)
 	{
 		
-		logger.log(Level.INFO, player.getPlayerName() + "final result=" + coinPair.toString());
+		logger.log(Level.INFO, player.getPlayerName() + " final result=" + coinPair.toString());
 		
 	}
 

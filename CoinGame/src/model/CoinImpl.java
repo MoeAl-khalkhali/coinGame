@@ -84,7 +84,7 @@ public class CoinImpl implements Coin
 
 	}
 
-	// checks to see if coins are equal by using the hascode
+	// checks to see if coins are equal by using the hashcode
 	public boolean equals(Coin coin)
 	{
 		Object coinObj = coin;

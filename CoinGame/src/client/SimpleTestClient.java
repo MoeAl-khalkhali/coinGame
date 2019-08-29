@@ -56,14 +56,14 @@ public class SimpleTestClient
 			// increases
 			// NOTE: we are passing a different BetType each time!
 			gameEngine.placeBet(player, 100, BetType.values()[enumOrdinal++ % BetType.values().length]);
-			gameEngine.spinPlayer(player, 100, 300, 100, 50, 500, 50);
+			gameEngine.spinPlayer(player, 100, 700, 100, 50, 500, 50);
 
 		}
 
 		logger.log(Level.INFO, "SPINNING ...");
 		// OutputTrace.pdf was generated with these parameter values (using only first 3
 		// params as per spec)
-		gameEngine.spinSpinner(100, 300, 200, 50, 500, 25);
+		gameEngine.spinSpinner(100, 700, 200, 50, 500, 25);
 
 		// TODO reset bets for next round if you were playing again
 	}
