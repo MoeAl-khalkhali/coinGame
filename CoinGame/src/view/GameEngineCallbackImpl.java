@@ -44,7 +44,7 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 	public void playerResult(Player player, CoinPair coinPair, GameEngine engine)
 	{
 		
-		logger.log(Level.INFO, player.getPlayerName() + " final result=" + coinPair.toString());
+		logger.log(Level.INFO, player.getPlayerName() + ", final result=" + coinPair.toString());
 		
 	}
 
@@ -54,7 +54,7 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 		//logs coin update whilst spinning
 		String oldFace = coin.getFace().toString();
 		String face = helper.changeCase(oldFace);
-		logger.log(Level.FINE, "Spinner " + " coin " + coin.getNumber() + " flipped to " + face);
+		logger.log(Level.FINE, "Spinner" + " coin " + coin.getNumber() + " flipped to " + face);
 
 	}
 
@@ -62,13 +62,16 @@ public class GameEngineCallbackImpl implements GameEngineCallback
 	public void spinnerResult(CoinPair coinPair, GameEngine engine)
 	{
 		//gives final results
-		logger.log(Level.INFO, "Spinner, " + "final result=" + coinPair.toString());
-		logger.log(Level.INFO, "Final Player Results");
+		StringBuilder sb = new StringBuilder();
 		//iterates over players and gets their results
 		for (Player player : engine.getAllPlayers())
 		{
-			logger.log(Level.INFO, player.toString() + "RESULT .. " + player.getResult().toString());
+			
+			sb.append(player.toString() + "RESULT .. " + player.getResult().toString() + "\n");
+			
 		}
+		logger.log(Level.INFO, "Spinner, " + "final result=" + coinPair.toString());
+		logger.log(Level.INFO, "Final Player Results\n" + sb.toString());
 
 	}
 }

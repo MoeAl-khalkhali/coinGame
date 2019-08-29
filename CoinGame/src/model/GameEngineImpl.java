@@ -21,10 +21,7 @@ public class GameEngineImpl implements GameEngine {
 	Collection<Player> players = new ArrayList<Player>();
 	Collection<GameEngineCallback> gameEngineCallback = new ArrayList<GameEngineCallback>();
 	GameEngineCallbackImpl gameEngineCallbackImpl = new GameEngineCallbackImpl();
-
-
-	private boolean isSpinner;
-	private boolean isPlayer;
+	private boolean isSpinner, isPlayer = false;
 
 	@Override
 	public void spinPlayer(Player player, int initialDelay1, int finalDelay1, int delayIncrement1, int initialDelay2,
@@ -44,7 +41,6 @@ public class GameEngineImpl implements GameEngine {
 		// creates spinner coin to spin
 		CoinPairImpl spinnerCoin = new CoinPairImpl();
 		isSpinner = true;
-
 		this.spin(spinnerCoin, initialDelay1, finalDelay1, delayIncrement1, initialDelay2, finalDelay2,
 				delayIncrement2);
 		isSpinner = false;
