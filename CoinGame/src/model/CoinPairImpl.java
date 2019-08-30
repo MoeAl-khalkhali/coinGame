@@ -32,8 +32,8 @@ public class CoinPairImpl implements CoinPair
 	// checks generated hashcode, if they are equal, return true
 	public boolean equals(CoinPair coinPair)
 	{
-		Object coinPairObj = coinPair;
-		if (this.equals(coinPairObj))
+		
+		if ((this.getCoin1().equals(coinPair.getCoin1()))&&(this.getCoin2().equals(coinPair.getCoin2())))
 		{
 			return true;
 		} else

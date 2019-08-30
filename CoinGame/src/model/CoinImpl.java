@@ -88,7 +88,7 @@ public class CoinImpl implements Coin
 	public boolean equals(Coin coin)
 	{
 		Object coinObj = coin;
-		if (this.equals(coinObj))
+		if (coin.getFace().equals(this.getFace()))
 		{
 			return true;
 		} else
@@ -114,11 +114,10 @@ public class CoinImpl implements Coin
 		if (obj == null)
 			return false;
 		CoinImpl other = (CoinImpl) obj;
-		if (coin != other.coin)
+		if (!(coin.equals(other.coin)))
 			return false;
 		return true;
 	}
-	//I am currently truing to configure git
 	// toString for the class
 	@Override
 	public String toString()
