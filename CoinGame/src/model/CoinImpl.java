@@ -118,7 +118,8 @@ public class CoinImpl implements Coin
 			return false;
 		return true;
 	}
-
+	// hope
+	// overidden
 	// toString for the class
 	@Override
 	public String toString()
