@@ -118,8 +118,7 @@ public class CoinImpl implements Coin
 			return false;
 		return true;
 	}
-	// hope
-	// overidden
+	//I am currently truing to configure git
 	// toString for the class
 	@Override
 	public String toString()
