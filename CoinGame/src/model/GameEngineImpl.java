@@ -126,6 +126,7 @@ public class GameEngineImpl implements GameEngine
 	{
 		for (Player currentPlayers : players)
 		{
+			//checks to see if player already exusts.
 			if (currentPlayers.equals(player))
 			{
 				players.remove(player);
