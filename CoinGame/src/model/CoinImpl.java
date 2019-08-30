@@ -97,8 +97,6 @@ public class CoinImpl implements Coin
 		}
 	}
 
-
-
 	@Override
 	public int hashCode()
 	{
