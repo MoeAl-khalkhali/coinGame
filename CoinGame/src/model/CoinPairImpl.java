@@ -20,7 +20,7 @@ public class CoinPairImpl implements CoinPair
 	public Coin getCoin2()
 	{
 		return coin2;
-	}k
+	}
 
 	// tostring for class
 	@Override
