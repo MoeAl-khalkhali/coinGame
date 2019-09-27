@@ -74,18 +74,7 @@ public class GameEngineImpl implements GameEngine
 	{
 		for (Player player : players)
 		{
-			if (player.getBetType().equals(betType.COIN1))
-			{
-				betType.COIN1.applyWinLoss(player, spinnerResult);
-			}
-			if (player.getBetType().equals(betType.COIN2))
-			{
-				betType.COIN2.applyWinLoss(player, spinnerResult);
-			}
-			if (player.getBetType().equals(betType.BOTH))
-			{
-				betType.BOTH.applyWinLoss(player, spinnerResult);
-			}
+			player.getBetType().applyWinLoss(player, spinnerResult);
 		}
 	}
 
