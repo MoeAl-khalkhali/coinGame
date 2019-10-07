@@ -59,17 +59,7 @@ public class SimpleTestClient
 			gameEngine.spinPlayer(player, 100, 300, 100, 50, 500, 50);
 		}
 
-<<<<<<< HEAD
 		logger.log(Level.INFO, "SPINNING ...");
 		// OutputTrace.pdf was generated with these parameter values (using only first 3
 		// params as per spec)
-		gameEngine.spinSpinner(100, 400, 200, 50, 500, 25);
-=======
-      logger.log(Level.INFO, "SPINNING ...");
-      // OutputTrace.pdf was generated with these parameter values (using only first 3 params as per spec)
-      gameEngine.spinSpinner(200, 400, 200, 50, 500, 25);
->>>>>>> refs/remotes/origin/master
-
-		// TODO reset bets for next round if you were playing again
-	}
-}
+		gameEngine.spinSpinner(100, 400, 200, 50, 500, 25);}}
