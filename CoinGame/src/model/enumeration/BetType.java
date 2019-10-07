@@ -55,7 +55,11 @@ public enum BetType
 				player.setPoints(player.getPoints() + 2*(player.getBet()));
 			} else
 			{
+<<<<<<< HEAD
 				player.setPoints(player.getPoints() - player.getBet());
+=======
+				player.setPoints(player.getPoints() - (player.getBet()));
+>>>>>>> refs/remotes/origin/master
 
 			}
 
