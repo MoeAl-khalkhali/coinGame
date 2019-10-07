@@ -202,14 +202,16 @@ public class GameEngineImpl implements GameEngine
 				// call logger to update status of coin
 				if (isPlayer == true)
 				{
-//					for (GameEngineCallback next : gameEngineCallback)
-//					{
-//						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
-//					}
-					gameEngineCallbackImpl.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
+					for (GameEngineCallback next : gameEngineCallback)
+					{
+						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
+					}
 				} else
 				{
-					gameEngineCallbackImpl.spinnerCoinUpdate(coinSpin.getCoin1(), this);
+					for (GameEngineCallback next : gameEngineCallback)
+					{
+						next.spinnerCoinUpdate(coinSpin.getCoin1(), this);
+					}
 				}
 			}
 			if (coinDelay2 < finalDelay1)
@@ -229,10 +231,16 @@ public class GameEngineImpl implements GameEngine
 
 				if (isPlayer == true)
 				{
-					gameEngineCallbackImpl.playerCoinUpdate(this.player, coinSpin.getCoin2(), this);
+					for (GameEngineCallback next : gameEngineCallback)
+					{
+						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
+					}
 				} else
 				{
-					gameEngineCallbackImpl.spinnerCoinUpdate(coinSpin.getCoin2(), this);
+					for (GameEngineCallback next : gameEngineCallback)
+					{
+						next.spinnerCoinUpdate(coinSpin.getCoin2(), this);
+					}
 				}
 			}
 		}
@@ -240,12 +248,19 @@ public class GameEngineImpl implements GameEngine
 		{
 			// sets result of the coin
 			player.setResult(coinSpin);
-			gameEngineCallbackImpl.playerResult(this.player, coinSpin, this);
+			for (GameEngineCallback next : gameEngineCallback)
+			{
+				next.playerResult(this.player, coinSpin, this);
+			}
 			isPlayer = false;
 		} else
 		{
 			this.applyBetResults(coinSpin);
-			gameEngineCallbackImpl.spinnerResult(coinSpin, this);
+			for (GameEngineCallback next : gameEngineCallback)
+			{
+				next.spinnerResult(coinSpin, this);
+			}
+			
 		}
 
 	}
