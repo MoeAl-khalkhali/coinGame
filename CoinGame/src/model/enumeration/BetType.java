@@ -55,7 +55,7 @@ public enum BetType
 				player.setPoints(player.getPoints() + 2*(player.getBet()));
 			} else
 			{
-				player.setPoints(player.getPoints() - 2*(player.getBet()));
+				player.setPoints(player.getPoints() - player.getBet());
 
 			}
 

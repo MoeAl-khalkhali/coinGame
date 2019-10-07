@@ -21,9 +21,10 @@ public class GameEngineImpl implements GameEngine
 	BetType betType;
 	Collection<Player> players = new ArrayList<Player>();
 	Collection<GameEngineCallback> gameEngineCallback = new ArrayList<GameEngineCallback>();
+	
 	GameEngineCallbackImpl gameEngineCallbackImpl = new GameEngineCallbackImpl();
-	private boolean isSpinner, isPlayer = false;
-	private boolean playerExists;
+	private boolean isPlayer = false;
+	
 
 	@Override
 	public void spinPlayer(Player player, int initialDelay1, int finalDelay1, int delayIncrement1, int initialDelay2,
@@ -55,7 +56,6 @@ public class GameEngineImpl implements GameEngine
 	{
 		// creates spinner coin to spin
 		CoinPairImpl spinnerCoin = new CoinPairImpl();
-		isSpinner = true;
 		if (!(this.checkDelays(initialDelay1, finalDelay1, delayIncrement1, initialDelay2, finalDelay2,
 				delayIncrement2)))
 		{
@@ -65,7 +65,6 @@ public class GameEngineImpl implements GameEngine
 			this.spin(spinnerCoin, initialDelay1, finalDelay1, delayIncrement1, initialDelay2, finalDelay2,
 					delayIncrement2);
 		}
-		isSpinner = false;
 	}
 
 	// checks to to see betType then calls appropriate method to apply results
@@ -74,18 +73,8 @@ public class GameEngineImpl implements GameEngine
 	{
 		for (Player player : players)
 		{
-			if (player.getBetType().equals(betType.COIN1))
-			{
-				betType.COIN1.applyWinLoss(player, spinnerResult);
-			}
-			if (player.getBetType().equals(betType.COIN2))
-			{
-				betType.COIN2.applyWinLoss(player, spinnerResult);
-			}
-			if (player.getBetType().equals(betType.BOTH))
-			{
-				betType.BOTH.applyWinLoss(player, spinnerResult);
-			}
+			player.getBetType().applyWinLoss(player, spinnerResult);
+
 		}
 	}
 
@@ -213,6 +202,10 @@ public class GameEngineImpl implements GameEngine
 				// call logger to update status of coin
 				if (isPlayer == true)
 				{
+//					for (GameEngineCallback next : gameEngineCallback)
+//					{
+//						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
+//					}
 					gameEngineCallbackImpl.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
 				} else
 				{
@@ -225,7 +218,7 @@ public class GameEngineImpl implements GameEngine
 				coinSpin.getCoin2().flip();
 				try
 				{
-					// adds real life delays
+					// adds real life delayss
 					Thread.sleep(coinDelay2);
 				} catch (InterruptedException e)
 				{
@@ -253,7 +246,6 @@ public class GameEngineImpl implements GameEngine
 		{
 			this.applyBetResults(coinSpin);
 			gameEngineCallbackImpl.spinnerResult(coinSpin, this);
-			isSpinner = false;
 		}
 
 	}

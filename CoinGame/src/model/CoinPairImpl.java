@@ -7,8 +7,8 @@ import model.interfaces.CoinPair;
 
 public class CoinPairImpl implements CoinPair
 {
-	CoinImpl coin1 = new CoinImpl(1);
-	CoinImpl coin2 = new CoinImpl(2);
+	Coin coin1 = new CoinImpl(1);
+	Coin coin2 = new CoinImpl(2);
 
 	// getter for coin 1
 	public Coin getCoin1()
@@ -19,7 +19,9 @@ public class CoinPairImpl implements CoinPair
 	// coin 2 getter
 	public Coin getCoin2()
 	{
+
 		return coin2;
+
 	}
 
 	// tostring for class
@@ -32,8 +34,8 @@ public class CoinPairImpl implements CoinPair
 	// checks generated hashcode, if they are equal, return true
 	public boolean equals(CoinPair coinPair)
 	{
-		
-		if ((this.getCoin1().equals(coinPair.getCoin1()))&&(this.getCoin2().equals(coinPair.getCoin2())))
+
+		if ((this.getCoin1().equals(coinPair.getCoin1())) && (this.getCoin2().equals(coinPair.getCoin2())))
 		{
 			return true;
 		} else
@@ -59,8 +61,8 @@ public class CoinPairImpl implements CoinPair
 			return true;
 		if (obj == null)
 			return false;
-		CoinPairImpl other = (CoinPairImpl) obj;
-		if ((coin1.equals(other.coin1)) && (coin2.equals(other.coin2)))
+		CoinPair other = (CoinPair) obj;
+		if ((coin1.equals(other)) && (coin2.equals(other)))
 		{
 			return true;
 

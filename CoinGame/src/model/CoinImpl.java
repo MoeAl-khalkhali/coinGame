@@ -1,14 +1,11 @@
 package model;
 
-import java.util.Objects;
-import model.enumeration.BetType;
 import model.enumeration.CoinFace;
 import model.interfaces.Coin;
 import util.Helper;
 
 public class CoinImpl implements Coin
 {
-	BetType bet;
 	CoinFace coin;
 	int number;
 
@@ -22,26 +19,24 @@ public class CoinImpl implements Coin
 
 		if (number == 1)
 		{
-			bet = bet.COIN1;
 			if (faceChosen == 1)
 			{
-				coin = coin.HEADS;
+				coin = CoinFace.HEADS;
 			} else
 			{
-				coin = coin.TAILS;
+				coin = CoinFace.TAILS;
 			}
 		}
 
 		if (number == 2)
 		{
-			bet = bet.COIN2;
 			if (faceChosen == 1)
 			{
-				coin = coin.HEADS;
+				coin = CoinFace.HEADS;
 
 			} else
 			{
-				coin = coin.TAILS;
+				coin = CoinFace.TAILS;
 			}
 		}
 
@@ -50,7 +45,7 @@ public class CoinImpl implements Coin
 	// returns if its coin 1 or coin 2 (returns just the number)
 	public int getNumber()
 	{
-		if (bet == bet.COIN1)
+		if (number == 1)
 		{
 			return 1;
 		} else
@@ -113,11 +108,12 @@ public class CoinImpl implements Coin
 			return true;
 		if (obj == null)
 			return false;
-		CoinImpl other = (CoinImpl) obj;
-		if (!(coin.equals(other.coin)))
+		Coin other = (Coin) obj;
+		if (!(coin.equals(other)))
 			return false;
 		return true;
 	}
+
 	// toString for the class
 	@Override
 	public String toString()
