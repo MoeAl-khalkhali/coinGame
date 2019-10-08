@@ -25,12 +25,10 @@ import view.GameEngineCallbackImpl;
  * @author Caspar Ryan
  * 
  */
-public class SimpleTestClient
-{
+public class SimpleTestClient {
 	private static final Logger logger = Logger.getLogger(SimpleTestClient.class.getName());
 
-	public static void main(String args[])
-	{
+	public static void main(String args[]) {
 		final GameEngine gameEngine = new GameEngineImpl();
 
 		// call method in Validator.jar to test *structural* correctness
@@ -49,8 +47,7 @@ public class SimpleTestClient
 
 		// main loop to add players and place a bet
 		int enumOrdinal = 0;
-		for (Player player : players)
-		{
+		for (Player player : players) {
 			gameEngine.addPlayer(player);
 			// mod with BetType length so we always stay in range even if num players
 			// increases
@@ -62,4 +59,6 @@ public class SimpleTestClient
 		logger.log(Level.INFO, "SPINNING ...");
 		// OutputTrace.pdf was generated with these parameter values (using only first 3
 		// params as per spec)
-		gameEngine.spinSpinner(100, 400, 200, 50, 500, 25);}}
+		gameEngine.spinSpinner(100, 400, 200, 50, 500, 25);
+	}
+}
