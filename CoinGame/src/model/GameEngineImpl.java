@@ -202,20 +202,18 @@ public class GameEngineImpl implements GameEngine
 				// call logger to update status of coin
 				if (isPlayer == true)
 				{
-					for (GameEngineCallback next : gameEngineCallback)
-					{
-						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
-					}
+//					for (GameEngineCallback next : gameEngineCallback)
+//					{
+//						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
+//					}
+					gameEngineCallbackImpl.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
 				} else
 				{
-					for (GameEngineCallback next : gameEngineCallback)
-					{
-						next.spinnerCoinUpdate(coinSpin.getCoin1(), this);
-					}
+					gameEngineCallbackImpl.spinnerCoinUpdate(coinSpin.getCoin1(), this);
 				}
 			}
 			if (coinDelay2 < finalDelay1)
-			{
+			{ 
 				coinDelay2 += delayIncrement1;
 				coinSpin.getCoin2().flip();
 				try
@@ -231,16 +229,10 @@ public class GameEngineImpl implements GameEngine
 
 				if (isPlayer == true)
 				{
-					for (GameEngineCallback next : gameEngineCallback)
-					{
-						next.playerCoinUpdate(this.player, coinSpin.getCoin1(), this);
-					}
+					gameEngineCallbackImpl.playerCoinUpdate(this.player, coinSpin.getCoin2(), this);
 				} else
 				{
-					for (GameEngineCallback next : gameEngineCallback)
-					{
-						next.spinnerCoinUpdate(coinSpin.getCoin2(), this);
-					}
+					gameEngineCallbackImpl.spinnerCoinUpdate(coinSpin.getCoin2(), this);
 				}
 			}
 		}
@@ -248,19 +240,12 @@ public class GameEngineImpl implements GameEngine
 		{
 			// sets result of the coin
 			player.setResult(coinSpin);
-			for (GameEngineCallback next : gameEngineCallback)
-			{
-				next.playerResult(this.player, coinSpin, this);
-			}
+			gameEngineCallbackImpl.playerResult(this.player, coinSpin, this);
 			isPlayer = false;
 		} else
 		{
 			this.applyBetResults(coinSpin);
-			for (GameEngineCallback next : gameEngineCallback)
-			{
-				next.spinnerResult(coinSpin, this);
-			}
-			
+			gameEngineCallbackImpl.spinnerResult(coinSpin, this);
 		}
 
 	}
