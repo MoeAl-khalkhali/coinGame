@@ -25,8 +25,10 @@ public class AddPlayerController implements ActionListener
 		String firstName = JOptionPane.showInputDialog("Name");
 		String pointsBalance = JOptionPane.showInputDialog("How Many Points Do you Have");
 		int balance = Integer.parseInt(pointsBalance);
-		Player players =  new SimplePlayer("1", firstName, balance);
+		Player players =  new SimplePlayer(firstName, firstName, balance);
 		gameEngine.addPlayer(players);
+		System.out.println(gameEngine.getAllPlayers());
+		players = null;
 
 		
 

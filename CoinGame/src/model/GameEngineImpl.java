@@ -99,7 +99,7 @@ public class GameEngineImpl implements GameEngine
 	{
 		for (Player currentPlayers : players)
 		{
-			if (currentPlayers.getPlayerId() == id)
+			if (currentPlayers.getPlayerId().equals(id))
 			{
 
 				return currentPlayers;
