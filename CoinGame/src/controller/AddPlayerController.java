@@ -29,11 +29,9 @@ public class AddPlayerController implements ActionListener
 		gameEngine.addPlayer(players);
 		System.out.println(gameEngine.getAllPlayers());
 		players = null;
-
-		
-
 		
 		
 	}
+
 
 }
